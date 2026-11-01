@@ -10,7 +10,7 @@ def create_table(cursor):
         CREATE TABLE IF NOT EXISTS expenses(
             id INTEGER PRIMARY KEY,
             amount REAL NOT NULL,
-            category_id TEXT NOT NULL,
+            category TEXT NOT NULL,
             date TEXT NOT NULL,
             description TEXT
             )
