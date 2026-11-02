@@ -2,6 +2,7 @@ import sqlite3
 
 def create_connection():
     connection = sqlite3.connect("expenses.db")
+    connection.row_factory = sqlite3.Row #To read value by column name
     cursor = connection.cursor()
     return connection, cursor
 
@@ -29,3 +30,12 @@ def add_expense(amount: float, category: str, date: str, description: str):
     """,(amount, category, date, description))
     connection.commit()
     connection.close()
+
+def get_expenses():
+    connection, cursor = create_connection()
+    cursor.execute("""
+        SELECT id, amount, category, date, description FROM expenses ORDER BY date DESC
+    """)
+    expenses = cursor.fetchall()
+    connection.close()
+    return expenses
