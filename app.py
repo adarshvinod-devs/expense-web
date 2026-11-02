@@ -6,7 +6,8 @@ setup_database()
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    expenses = get_expenses()
+    return render_template("index.html",expenses=expenses)
 
 @app.route("/add", methods=["POST"])
 def add_expense_route():
