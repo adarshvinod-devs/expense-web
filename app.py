@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 from database import setup_database, add_expense, get_expenses
 
 app = Flask(__name__)
-setup_database()print(amount,category,date,description)
+setup_database()
 
 @app.route("/")
 def home():
