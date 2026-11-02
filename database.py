@@ -17,7 +17,15 @@ def create_table(cursor):
     """)
 
 def setup_database():
-    connection , cursor = create_connection()
+    connection, cursor = create_connection()
     create_table(cursor)
+    connection.commit()
+    connection.close()
+
+def add_expense(amount: float, category: str, date: str, description: str):
+    connection , cursor = create_connection()
+    cursor.execute("""
+        INSERT INTO expenses(amount, category, date, description) VALUES(?,?,?,?)
+    """,(amount, category, date, description))
     connection.commit()
     connection.close()
