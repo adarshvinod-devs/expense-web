@@ -70,7 +70,16 @@
                         </tr>
                     </thead>
                     <tbody id="expense-list">
-
+                        {% for expense in expenses %}
+                        <tr>
+                            <td>
+                                {{ expense["id"] }}
+                            </td>
+                            <td>
+                                {{ expense["amount"] }}
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
 
                 </table>
